@@ -27,6 +27,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.hardware.input.InputManager;
 import android.os.Handler;
 import android.os.Looper;
@@ -52,6 +53,7 @@ import java.util.Locale;
 import com.android.internal.statusbar.IStatusBarService;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Some custom utilities
@@ -246,11 +248,15 @@ public class StagUtils {
         }
         return null;
     }
-
+    
+    public static boolean isChineseLanguage() {
+       return Resources.getSystem().getConfiguration().locale.getLanguage().startsWith(
+       Locale.CHINESE.getLanguage());
+    }
     public static void takeScreenrecord(int mode) {
         IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
         try {
-            wm.screenRecordAction(mode);
+	            wm.screenRecordAction(mode);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
