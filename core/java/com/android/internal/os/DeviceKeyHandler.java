@@ -1,12 +1,5 @@
 /*
-<<<<<<< HEAD
- * Copyright (C) 2012 The CyanogenMod Project
- * Copyright (C) 2015 The OmniROM Project
- *
- * Licensed under the Apache License,
-=======
  * Copyright (C) 2012 The CyanogenMod Project Licensed under the Apache License,
->>>>>>> 1ee311f02db... Dispatch keys to a device specific key handler
  * Version 2.0 (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
@@ -31,7 +24,8 @@ public interface DeviceKeyHandler {
      * @param event The key event to be handled
      * @return If the event is consume
      */
-    public boolean handleKeyEvent(KeyEvent event);
+    public KeyEvent handleKeyEvent(KeyEvent event);
+
     /**
      * Invoked when an unknown key was detected by the system,
      * this should NOT handle the key just return if it WOULD be handled

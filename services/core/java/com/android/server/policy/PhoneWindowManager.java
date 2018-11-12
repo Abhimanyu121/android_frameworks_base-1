@@ -317,7 +317,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.util.List;
-import java.lang.reflect.Constructor;
 
 /**
  * WindowManagerPolicy implementation for the Android phone UI.  This
@@ -4379,7 +4378,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (mDeviceKeyHandler != null) {
             try {
                 // The device only should consume known keys.
-                if (mDeviceKeyHandler.handleKeyEvent(event)) {
+                event = mDeviceKeyHandler.handleKeyEvent(event);
+                if (event == null) {
                     return -1;
                 }
             } catch (Exception e) {
@@ -6612,7 +6612,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (mDeviceKeyHandler != null) {
             try {
                 // The device only should consume known keys.
-                if (mDeviceKeyHandler.handleKeyEvent(event)) {
+                event = mDeviceKeyHandler.handleKeyEvent(event);
+                if (event == null) {
                     return 0;
                 }
             } catch (Exception e) {
